@@ -1,0 +1,321 @@
+/* ============================================
+   СУЕТАПОЛИЯ — Main Styles
+   ============================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+#game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--border-glow);
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.6em;
+  font-weight: 900;
+  color: var(--logo-color);
+  text-shadow: var(--logo-shadow);
+  letter-spacing: 3px;
+  user-select: none;
+}
+
+.theme-switcher {
+  display: flex;
+  gap: 6px;
+}
+
+.theme-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn:hover, .theme-btn.active {
+  border-color: var(--accent);
+  box-shadow: var(--accent-glow);
+  transform: scale(1.1);
+}
+
+/* ===== GAME AREA ===== */
+#game-area {
+  display: flex;
+  height: calc(100vh - 60px - 50px);
+  gap: 0;
+}
+
+/* ===== SIDEBAR ===== */
+#sidebar {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-color);
+  overflow-y: auto;
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.panel h3 {
+  font-size: 0.85em;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+/* ===== PLAYERS LIST ===== */
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  transition: var(--transition);
+}
+
+.player-info.active {
+  background: var(--btn-bg);
+  border: 1px solid var(--accent);
+}
+
+.player-token-display {
+  font-size: 1.2em;
+}
+
+.player-name {
+  font-weight: 600;
+  font-size: 0.85em;
+  flex: 1;
+}
+
+.player-money {
+  font-size: 0.8em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ===== DICE ===== */
+#dice-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.die {
+  width: 50px;
+  height: 50px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.die.rolling {
+  animation: diceRoll 0.1s infinite;
+}
+
+@keyframes diceRoll {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background: var(--btn-primary-bg);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-action {
+  width: 100%;
+  padding: 8px;
+  background: var(--btn-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 0.85em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 4px;
+}
+
+.btn-action:hover:not(:disabled) {
+  background: var(--btn-hover);
+  border-color: var(--accent);
+}
+
+.btn-action:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#action-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+/* ===== CHAT ===== */
+#chat-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+}
+
+#chat-messages {
+  flex: 1;
+  background: var(--chat-bg);
+  border-radius: 8px;
+  padding: 8px;
+  overflow-y: auto;
+  max-height: 150px;
+  margin-bottom: 8px;
+  font-size: 0.8em;
+}
+
+.chat-msg {
+  margin-bottom: 4px;
+  padding: 3px 0;
+  line-height: 1.4;
+}
+
+.chat-msg .sender {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+#chat-input-area {
+  display: flex;
+  gap: 6px;
+}
+
+#chat-input {
+  flex: 1;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 0.85em;
+  outline: none;
+  transition: var(--transition);
+}
+
+#chat-input:focus {
+  border-color: var(--accent);
+}
+
+#chat-send {
+  padding: 8px 14px;
+  background: var(--btn-primary-bg);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+#quick-emoji {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.emoji-btn {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+  border-color: var(--accent);
+}
+
+/* ===== AD BANNER ===== */
+.ad-slot {
+  height: 50px;
+  background: var(--ad-bg);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.8em;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }

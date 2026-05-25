@@ -1,0 +1,144 @@
+/* ============================================
+   СУЕТАПОЛИЯ — Theme System
+   4 switchable themes
+   ============================================ */
+
+:root {
+  --font-main: 'Outfit', sans-serif;
+  --board-size: min(75vh, 70vw);
+  --tile-size: calc(var(--board-size) / 11);
+  --corner-size: calc(var(--tile-size) * 1.4);
+  --transition: all 0.3s ease;
+}
+
+/* ===================== NEON THEME ===================== */
+[data-theme="neon"] {
+  --bg-primary: #0a0a1a;
+  --bg-secondary: #12122a;
+  --bg-panel: rgba(15, 15, 40, 0.9);
+  --bg-board: #0d0d25;
+  --border-color: rgba(0, 255, 255, 0.3);
+  --border-glow: 0 0 15px rgba(0, 255, 255, 0.2);
+  --text-primary: #e0e0ff;
+  --text-secondary: #8888cc;
+  --accent: #00ffff;
+  --accent2: #ff00ff;
+  --accent-glow: 0 0 20px rgba(0, 255, 255, 0.4);
+  --btn-bg: linear-gradient(135deg, #00ffff22, #ff00ff22);
+  --btn-hover: linear-gradient(135deg, #00ffff44, #ff00ff44);
+  --btn-primary-bg: linear-gradient(135deg, #00cccc, #cc00cc);
+  --tile-bg: rgba(10, 10, 30, 0.8);
+  --tile-hover: rgba(0, 255, 255, 0.1);
+  --header-bg: linear-gradient(90deg, #0a0a2a, #1a0a3a, #0a0a2a);
+  --logo-color: #00ffff;
+  --logo-shadow: 0 0 30px #00ffff, 0 0 60px #ff00ff;
+  --chat-bg: rgba(10, 10, 30, 0.6);
+  --ad-bg: rgba(20, 10, 40, 0.8);
+  --property-brown: #8B5E3C;
+  --property-lightblue: #00bcd4;
+  --property-pink: #e91e90;
+  --property-orange: #ff9800;
+  --property-red: #f44336;
+  --property-yellow: #ffeb3b;
+  --property-green: #4caf50;
+  --property-darkblue: #1565c0;
+}
+
+/* ===================== LUXURY THEME ===================== */
+[data-theme="luxury"] {
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1a1a;
+  --bg-panel: rgba(20, 20, 20, 0.95);
+  --bg-board: #111;
+  --border-color: rgba(200, 168, 78, 0.4);
+  --border-glow: 0 0 15px rgba(200, 168, 78, 0.15);
+  --text-primary: #f0e6d0;
+  --text-secondary: #8a7a5a;
+  --accent: #c8a84e;
+  --accent2: #e8c86e;
+  --accent-glow: 0 0 20px rgba(200, 168, 78, 0.3);
+  --btn-bg: linear-gradient(135deg, rgba(200,168,78,0.1), rgba(200,168,78,0.05));
+  --btn-hover: linear-gradient(135deg, rgba(200,168,78,0.25), rgba(200,168,78,0.1));
+  --btn-primary-bg: linear-gradient(135deg, #c8a84e, #a08030);
+  --tile-bg: rgba(15, 15, 15, 0.9);
+  --tile-hover: rgba(200, 168, 78, 0.08);
+  --header-bg: linear-gradient(90deg, #111, #1a1510, #111);
+  --logo-color: #c8a84e;
+  --logo-shadow: 0 0 30px rgba(200,168,78,0.5);
+  --chat-bg: rgba(15, 12, 8, 0.7);
+  --ad-bg: rgba(20, 18, 12, 0.8);
+  --property-brown: #8B5E3C;
+  --property-lightblue: #5c9aad;
+  --property-pink: #c06080;
+  --property-orange: #d4882e;
+  --property-red: #c0392b;
+  --property-yellow: #d4a820;
+  --property-green: #3a8a40;
+  --property-darkblue: #1a4a8a;
+}
+
+/* ===================== STREET THEME ===================== */
+[data-theme="street"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #2d1b69;
+  --bg-panel: rgba(30, 20, 60, 0.9);
+  --bg-board: #1e1040;
+  --border-color: rgba(255, 225, 77, 0.4);
+  --border-glow: 0 0 10px rgba(255, 51, 102, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #bbaadd;
+  --accent: #ff3366;
+  --accent2: #ffe14d;
+  --accent-glow: 0 0 20px rgba(255, 51, 102, 0.3);
+  --btn-bg: linear-gradient(135deg, rgba(255,51,102,0.15), rgba(255,225,77,0.1));
+  --btn-hover: linear-gradient(135deg, rgba(255,51,102,0.3), rgba(255,225,77,0.2));
+  --btn-primary-bg: linear-gradient(135deg, #ff3366, #ff6b35);
+  --tile-bg: rgba(25, 15, 50, 0.8);
+  --tile-hover: rgba(255, 51, 102, 0.1);
+  --header-bg: linear-gradient(90deg, #ff3366, #ff6b35, #ffe14d);
+  --logo-color: #fff;
+  --logo-shadow: 3px 3px 0 #000, 0 0 20px rgba(255,51,102,0.5);
+  --chat-bg: rgba(25, 15, 50, 0.6);
+  --ad-bg: rgba(30, 20, 60, 0.8);
+  --property-brown: #8B5E3C;
+  --property-lightblue: #00e5ff;
+  --property-pink: #ff3366;
+  --property-orange: #ff6b35;
+  --property-red: #ff1744;
+  --property-yellow: #ffe14d;
+  --property-green: #76ff03;
+  --property-darkblue: #2979ff;
+}
+
+/* ===================== MINIMAL THEME ===================== */
+[data-theme="minimal"] {
+  --bg-primary: #181825;
+  --bg-secondary: #1e1e2e;
+  --bg-panel: rgba(30, 30, 46, 0.95);
+  --bg-board: #11111b;
+  --border-color: rgba(100, 100, 140, 0.3);
+  --border-glow: none;
+  --text-primary: #cdd6f4;
+  --text-secondary: #6c7086;
+  --accent: #89b4fa;
+  --accent2: #b4befe;
+  --accent-glow: none;
+  --btn-bg: rgba(137, 180, 250, 0.08);
+  --btn-hover: rgba(137, 180, 250, 0.15);
+  --btn-primary-bg: linear-gradient(135deg, #89b4fa, #74c7ec);
+  --tile-bg: rgba(17, 17, 27, 0.9);
+  --tile-hover: rgba(137, 180, 250, 0.05);
+  --header-bg: #1e1e2e;
+  --logo-color: #89b4fa;
+  --logo-shadow: none;
+  --chat-bg: rgba(17, 17, 27, 0.5);
+  --ad-bg: rgba(24, 24, 37, 0.8);
+  --property-brown: #8B6544;
+  --property-lightblue: #74c7ec;
+  --property-pink: #f38ba8;
+  --property-orange: #fab387;
+  --property-red: #f38ba8;
+  --property-yellow: #f9e2af;
+  --property-green: #a6e3a1;
+  --property-darkblue: #89b4fa;
+}

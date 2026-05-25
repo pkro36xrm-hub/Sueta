@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Суетаполия — бесплатная онлайн настольная игра. Покупай бизнесы, строй империю, играй с друзьями!">
+<title>Суетаполия — Онлайн настольная игра</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/board.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="neon">
+
+<div id="app">
+  <!-- HEADER -->
+  <header id="game-header">
+    <div class="logo">🎲 СУЕТАПОЛИЯ</div>
+    <div class="header-controls">
+      <div class="theme-switcher" id="theme-switcher">
+        <button data-theme="neon" class="theme-btn active" title="Неон">🌃</button>
+        <button data-theme="luxury" class="theme-btn" title="Лакшери">💰</button>
+        <button data-theme="street" class="theme-btn" title="Стрит">🎨</button>
+        <button data-theme="minimal" class="theme-btn" title="Минимализм">⚫</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- GAME AREA -->
+  <main id="game-area">
+    <!-- BOARD -->
+    <div id="board-container">
+      <div id="board"></div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <!-- Player Info -->
+      <div class="panel" id="player-panel">
+        <h3>👤 Игроки</h3>
+        <div id="players-list"></div>
+      </div>
+
+      <!-- Dice -->
+      <div class="panel" id="dice-panel">
+        <div id="dice-container">
+          <div class="die" id="die1">⚀</div>
+          <div class="die" id="die2">⚀</div>
+        </div>
+        <button id="roll-btn" class="btn-primary">🎲 Бросить кубики</button>
+      </div>
+
+      <!-- Actions -->
+      <div class="panel" id="action-panel">
+        <button id="buy-btn" class="btn-action" disabled>🏪 Купить</button>
+        <button id="build-btn" class="btn-action" disabled>🏗️ Строить</button>
+        <button id="deal-btn" class="btn-action" disabled>🤝 Сделка</button>
+        <button id="end-turn-btn" class="btn-action" disabled>➡️ Конец хода</button>
+      </div>
+
+      <!-- Chat -->
+      <div class="panel" id="chat-panel">
+        <h3>💬 Чат</h3>
+        <div id="chat-messages"></div>
+        <div id="chat-input-area">
+          <input type="text" id="chat-input" placeholder="Написать...">
+          <button id="chat-send">➤</button>
+        </div>
+        <div id="quick-emoji">
+          <button class="emoji-btn">😂</button>
+          <button class="emoji-btn">🤬</button>
+          <button class="emoji-btn">👍</button>
+          <button class="emoji-btn">🔥</button>
+          <button class="emoji-btn">💀</button>
+          <button class="emoji-btn">😎</button>
+          <button class="emoji-btn">🤡</button>
+          <button class="emoji-btn">💰</button>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- AD BANNER -->
+  <div id="ad-banner" class="ad-slot">
+    <span>📢 Рекламное место</span>
+  </div>
+</div>
+
+<script src="js/gameData.js"></script>
+<script src="js/board.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
