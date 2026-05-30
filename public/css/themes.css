@@ -5,6 +5,7 @@
 
 :root {
   --font-main: 'Outfit', sans-serif;
+  --font-game: 'Russo One', 'Outfit', sans-serif;
   --board-size: min(75vh, 70vw);
   --tile-size: calc(var(--board-size) / 11);
   --corner-size: calc(var(--tile-size) * 1.4);
@@ -141,4 +142,37 @@
   --property-yellow: #f9e2af;
   --property-green: #a6e3a1;
   --property-darkblue: #89b4fa;
+}
+
+/* ===================== CLASSIC THEME ===================== */
+[data-theme="classic"] {
+  --bg-primary: #1e1533;
+  --bg-secondary: #2a2045;
+  --bg-panel: rgba(30, 21, 51, 0.95);
+  --bg-board: #231a3a;
+  --border-color: rgba(140, 130, 170, 0.25);
+  --border-glow: none;
+  --text-primary: #f0eef5;
+  --text-secondary: #9990b0;
+  --accent: #e8e8e8;
+  --accent2: #b8b0d0;
+  --accent-glow: none;
+  --btn-bg: rgba(255, 255, 255, 0.06);
+  --btn-hover: rgba(255, 255, 255, 0.12);
+  --btn-primary-bg: linear-gradient(135deg, #7c5cbf, #5a3d9e);
+  --tile-bg: rgba(35, 28, 58, 0.9);
+  --tile-hover: rgba(255, 255, 255, 0.06);
+  --header-bg: #1e1533;
+  --logo-color: #ffffff;
+  --logo-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  --chat-bg: rgba(25, 18, 42, 0.6);
+  --ad-bg: rgba(30, 21, 51, 0.8);
+  --property-brown: #8B6544;
+  --property-lightblue: #5ba8c8;
+  --property-pink: #d65888;
+  --property-orange: #e8883a;
+  --property-red: #d44040;
+  --property-yellow: #d4b830;
+  --property-green: #48a848;
+  --property-darkblue: #3868b8;
 }

@@ -6,60 +6,147 @@
 <meta name="description" content="Суетаполия — бесплатная онлайн настольная игра. Покупай бизнесы, строй империю, играй с друзьями!">
 <title>Суетаполия — Онлайн настольная игра</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Outfit:wght@400;600;700;900&family=Russo+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/themes.css">
 <link rel="stylesheet" href="css/board.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-theme="neon">
 
-<div id="app">
-  <!-- HEADER -->
-  <header id="game-header">
-    <div class="logo">🎲 СУЕТАПОЛИЯ</div>
-    <div class="header-controls">
-      <div class="theme-switcher" id="theme-switcher">
+
+
+<!-- ===== NICKNAME SCREEN ===== -->
+<div id="nickname-screen" style="display:none">
+  <div class="nick-container">
+    <div class="nick-logo">🎲 СУЕТАПОЛИЯ</div>
+    <div class="nick-subtitle">Выбери фигурку и введи ник</div>
+    <div class="nick-input-group">
+      <label for="nick-input">Твой никнейм:</label>
+      <input type="text" id="nick-input" maxlength="16" placeholder="Введи ник..." autocomplete="off">
+    </div>
+    <div class="nick-label">Выбери фигурку:</div>
+    <div id="token-grid" class="token-grid"></div>
+    <button id="nick-ready-btn" class="btn-play" disabled>➡️ Далее</button>
+    <div class="theme-switcher-nick">
+      <span class="nick-theme-label">Тема:</span>
+      <button data-theme="neon" class="theme-btn active" title="Неон">🌃</button>
+      <button data-theme="luxury" class="theme-btn" title="Лакшери">💰</button>
+      <button data-theme="street" class="theme-btn" title="Стрит">🎨</button>
+      <button data-theme="minimal" class="theme-btn" title="Минимализм">⚫</button>
+      <button data-theme="classic" class="theme-btn" title="Классика">🎲</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOBBY ===== -->
+<div id="lobby-screen" style="display:none">
+  <div class="lobby-container">
+    <div class="lobby-logo">🎲 НАСТРОЙКИ ИГРЫ</div>
+    <div class="lobby-subtitle">Настрой правила перед началом</div>
+    <div class="lobby-section">
+      <h3>💰 Стартовый бюджет</h3>
+      <div class="lobby-options" id="budget-options">
+        <button class="lobby-opt" data-value="500">$500</button>
+        <button class="lobby-opt active" data-value="1000">$1000</button>
+        <button class="lobby-opt" data-value="1500">$1500</button>
+      </div>
+    </div>
+    <div class="lobby-section">
+      <h3>🃏 Персонажи</h3>
+      <div class="lobby-toggle-row"><span>Играть с карточками персонажей</span><label class="toggle"><input type="checkbox" id="toggle-characters" checked><span class="toggle-slider"></span></label></div>
+      <p class="lobby-hint">Персонажи раздаются случайно</p>
+    </div>
+    <div class="lobby-section">
+      <h3>🏦 Аукционы</h3>
+      <div class="lobby-toggle-row"><span>Аукцион при отказе от покупки</span><label class="toggle"><input type="checkbox" id="toggle-auctions"><span class="toggle-slider"></span></label></div>
+    </div>
+    <div class="lobby-section">
+      <h3>⚙️ Доп. правила</h3>
+      <div class="lobby-toggle-row"><span>🟢 Двойная Суета ($400)</span><label class="toggle"><input type="checkbox" id="toggle-double-start"><span class="toggle-slider"></span></label></div>
+      <p class="lobby-hint">Попал точно на «Суета» — получаешь $400 вместо $200.</p>
+      <div class="lobby-toggle-row" style="margin-top:12px"><span>🤙 Заехал к Пахану</span><label class="toggle"><input type="checkbox" id="toggle-pahan"><span class="toggle-slider"></span></label></div>
+      <p class="lobby-hint">Все штрафы и налоги копятся у Пахана. Кто попал — забирает всё.</p>
+    </div>
+    <div class="lobby-section">
+      <h3>⏱️ Таймер хода</h3>
+      <div class="lobby-options" id="timer-options">
+        <button class="lobby-opt active" data-value="0">Без лимита</button>
+        <button class="lobby-opt" data-value="30">30 сек</button>
+        <button class="lobby-opt" data-value="60">60 сек</button>
+        <button class="lobby-opt" data-value="90">90 сек</button>
+      </div>
+    </div>
+    <button id="lobby-start-btn" class="btn-play">🎲 Начать игру!</button>
+  </div>
+</div>
+
+<!-- ===== GAME ===== -->
+<div id="app" style="display:none">
+  <div id="main-layout">
+    <div class="ad-side" id="ad-left">
+      <div class="logo">🎲 СУЕТАПОЛИЯ</div>
+      <div class="ad-side-label">РЕКЛАМА</div>
+      <div class="ad-side-space">📢<br>Рекламное<br>место<br>(160x600)</div>
+    </div>
+
+    <main id="game-area">
+      <div id="board-container">
+        <div id="board">
+          <!-- Center area with 3D dice -->
+          <div id="board-center">
+            <div id="dice-3d-area">
+              <div class="dice-3d-container">
+                <div class="die-3d" id="die3d-1">
+                  <div class="die-face front">&#9856;</div>
+                  <div class="die-face back">&#9861;</div>
+                  <div class="die-face right">&#9858;</div>
+                  <div class="die-face left">&#9859;</div>
+                  <div class="die-face top">&#9857;</div>
+                  <div class="die-face bottom">&#9860;</div>
+                </div>
+              </div>
+              <div class="dice-3d-container">
+                <div class="die-3d" id="die3d-2">
+                  <div class="die-face front">&#9856;</div>
+                  <div class="die-face back">&#9861;</div>
+                  <div class="die-face right">&#9858;</div>
+                  <div class="die-face left">&#9859;</div>
+                  <div class="die-face top">&#9857;</div>
+                  <div class="die-face bottom">&#9860;</div>
+                </div>
+              </div>
+            </div>
+            <div id="dice-result"></div>
+            <div id="turn-timer"></div>
+            <button id="roll-btn" class="btn-roll">🎲 БРОСИТЬ</button>
+            <div id="game-log"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside id="sidebar">
+      <div class="theme-switcher-bar">
         <button data-theme="neon" class="theme-btn active" title="Неон">🌃</button>
         <button data-theme="luxury" class="theme-btn" title="Лакшери">💰</button>
         <button data-theme="street" class="theme-btn" title="Стрит">🎨</button>
         <button data-theme="minimal" class="theme-btn" title="Минимализм">⚫</button>
+        <button data-theme="classic" class="theme-btn" title="Классика">🎲</button>
       </div>
-    </div>
-  </header>
-
-  <!-- GAME AREA -->
-  <main id="game-area">
-    <!-- BOARD -->
-    <div id="board-container">
-      <div id="board"></div>
-    </div>
-
-    <!-- SIDEBAR -->
-    <aside id="sidebar">
-      <!-- Player Info -->
       <div class="panel" id="player-panel">
         <h3>👤 Игроки</h3>
         <div id="players-list"></div>
       </div>
-
-      <!-- Dice -->
-      <div class="panel" id="dice-panel">
-        <div id="dice-container">
-          <div class="die" id="die1">⚀</div>
-          <div class="die" id="die2">⚀</div>
-        </div>
-        <button id="roll-btn" class="btn-primary">🎲 Бросить кубики</button>
+      <div class="panel" id="my-props-panel">
+        <h3 class="props-header" onclick="togglePropsPanel()">🏠 Мои улицы <span id="props-count">(0)</span> <span class="props-toggle">▼</span></h3>
+        <div id="my-props-list" class="props-list"></div>
       </div>
-
-      <!-- Actions -->
       <div class="panel" id="action-panel">
         <button id="buy-btn" class="btn-action" disabled>🏪 Купить</button>
-        <button id="build-btn" class="btn-action" disabled>🏗️ Строить</button>
+        <button id="build-btn" class="btn-action">🏗️ Строить</button>
         <button id="deal-btn" class="btn-action" disabled>🤝 Сделка</button>
         <button id="end-turn-btn" class="btn-action" disabled>➡️ Конец хода</button>
       </div>
-
-      <!-- Chat -->
       <div class="panel" id="chat-panel">
         <h3>💬 Чат</h3>
         <div id="chat-messages"></div>
@@ -79,11 +166,8 @@
         </div>
       </div>
     </aside>
-  </main>
 
-  <!-- AD BANNER -->
-  <div id="ad-banner" class="ad-slot">
-    <span>📢 Рекламное место</span>
+
   </div>
 </div>
 
